@@ -16,18 +16,29 @@ int main(int argc, char *argv[])
 
   switch(operator)
     {
-    case '/': answer = valueOne/valueTwo;
+    case '/':  
+      if (valueTwo == 0){
+        printf("Error: Division by zero is not allowed.\n");
+        goto fail;
+      }
+      answer = valueOne / valueTwo;
       break;
+
     case '*': answer = valueOne*valueTwo;
       break;
+      
     case '+': answer = valueOne+valueTwo;
       break;
+      
     case '-': answer = valueOne-valueTwo;
       break;
+      
     case '^': answer = pow(valueOne,valueTwo);
       break;
+      
     case ' ': answer = sqrt(valueTwo);
       break;
+      
     default: goto fail;
     }
   printf("%.9g%c%.9g =  %.6g\n\n",valueOne,operator, valueTwo, answer);
